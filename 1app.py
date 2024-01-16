@@ -3,7 +3,7 @@ import smtplib
 from email.message import EmailMessage
 
 #Seu email de envio, lembre de configurar a secret_key do action com a senha do email definido abaixo
-EMAIL_ADDRESS = "torcidas2002@gmail.com"
+EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 # Criando email
