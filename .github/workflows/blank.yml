@@ -21,7 +21,7 @@ jobs:
           target: 'https://juice-shop.herokuapp.com/'
       
       - name: Download Script # esse raw pode variar adicione seu codigo de envio de email em formato raw abaixo
-        run: wget https://raw.githubusercontent.com/SenhorDosSonhos1/test_dast_pipeline/039bf7b7f5b46d6c2b14f6a38b6a18a2679639da/1app.py?token=GHSAT0AAAAAACJWN4GKM6FJUG7AQXHNNPJWZNGP7DQ
+        run: wget https://raw.githubusercontent.com/SenhorDosSonhos1/test_dast_pipeline/main/1app.py
       
       - name: Send Email
         env:
