@@ -1,0 +1,29 @@
+name: OWASP ZAP | ANALISE DAST 
+on: 
+  schedule:
+    - cron: '30 3 * * *'  # Executar todos os dias às 3h UTC
+  workflow_dispatch: # Permite o acionamento manual do workflow
+  
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+    
+      - name: Setup Python
+        uses: actions/setup-python@v5.0.0
+        with:
+          python-version: "3.12"  
+
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.8.0
+        with:
+          target: 'https://juice-shop.herokuapp.com/'
+      
+      - name: Download Script # esse raw pode variar adicione seu codigo de envio de email em formato raw abaixo
+        run: wget https://raw.githubusercontent.com/Jorge-X/flask-restplus-server-example/master/codigos_de_workflow/1app.py
+      
+      - name: Send Email
+        env:
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python 1app.py
